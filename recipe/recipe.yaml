@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: aws-c-compression
-  version: "0.3.2"
+  version: "0.3.3"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://github.com/awslabs/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: f93f5a5d8b3fee3a6d97b14ba279efacd4d4016ef9cc7dc4be7d43519ecfbe93
+  sha256: 33a91db709a547f417b1b23fdb76a64727ee8fb7ed88dd1a43be117f402db356
 
 build:
-  number: 6
+  number: 0
 
 requirements:
   build:
