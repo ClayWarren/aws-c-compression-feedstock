@@ -13,7 +13,7 @@ source:
   sha256: 33a91db709a547f417b1b23fdb76a64727ee8fb7ed88dd1a43be117f402db356
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -36,6 +36,22 @@ tests:
         then:
           - if not exist %LIBRARY_INC%\\aws\\compression\\compression.h exit 1
           - if not exist %PREFIX%\\Library\\bin\\aws-c-compression.dll exit 1
+  - if: win and arm64
+    then:
+      requirements:
+        run:
+          - ${{ compiler('c') }}
+          - cmake
+      files:
+        recipe:
+          - CMakeLists.txt
+          - consumer.c
+      script:
+        - cmake -S . -B consumer-build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%"
+        - cmake --build consumer-build
+        - consumer-build\compression_consumer.exe
+        - dumpbin /headers "%LIBRARY_BIN%\aws-c-compression.dll" | findstr /I /C:"AA64 machine (ARM64)"
+        - dumpbin /headers consumer-build\compression_consumer.exe | findstr /I /C:"AA64 machine (ARM64)"
 about:
   license: Apache-2.0
   license_file: LICENSE

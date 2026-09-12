@@ -12,3 +12,5 @@ conda_install_tool: pixi
 github:
   branch_name: main
   tooling_branch_name: main
+provider:
+  win_arm64: default
