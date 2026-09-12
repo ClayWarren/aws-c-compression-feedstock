@@ -1,7 +1,7 @@
 name: aws-c-compression native Windows ARM64
 on:
   push:
-    branches: [codex/aws-compression-arm64-probe]
+    branches: [codex/aws-compression-pinned-arm64-probe]
 permissions:
   contents: read
   actions: read
