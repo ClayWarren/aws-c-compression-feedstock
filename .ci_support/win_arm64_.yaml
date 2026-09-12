@@ -1,0 +1,12 @@
+aws_c_common:
+- 0.14.4
+c_compiler:
+- vs2022
+c_stdlib:
+- vs
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+target_platform:
+- win-arm64
